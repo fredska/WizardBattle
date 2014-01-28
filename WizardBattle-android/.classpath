@@ -2,12 +2,12 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry kind="src" exported="true" path="/WizardBattle" combineaccessrules="false"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/WizardBattle"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="lib" path="/WizardBattle/libs/gdx.jar" sourcepath="/WizardBattle/libs/gdx-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/WizardBattle/libs/tween-engine-api.jar" sourcepath="/WizardBattle/libs/tween-engine-api-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/WizardBattle/libs/bodyeditor-loader.jar" sourcepath="/WizardBattle/libs/bodyeditor-loader-sources.jar"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="output" path="bin/classes"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
-	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
-	<classpathentry kind="lib" exported="true" path="/WizardBattle/libs/gdx.jar" sourcepath="/WizardBattle/libs/gdx-sources.jar"/>
-	<classpathentry kind="lib" exported="true" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
-	<classpathentry kind="lib" exported="true" path="/WizardBattle/libs/tween-engine-api.jar" sourcepath="/WizardBattle/libs/tween-engine-api-sources.jar"/>
-	<classpathentry kind="lib" exported="true" path="/WizardBattle/libs/bodyeditor-loader.jar" sourcepath="/WizardBattle/libs/bodyeditor-loader-sources.jar"/>
 </classpath>
