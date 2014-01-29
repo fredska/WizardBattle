@@ -6,8 +6,7 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="lib" path="/WizardBattle/libs/gdx.jar" sourcepath="/WizardBattle/libs/gdx-sources.jar"/>
 	<classpathentry exported="true" kind="lib" path="libs/gdx-backend-android.jar" sourcepath="libs/gdx-backend-android-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/WizardBattle/libs/tween-engine-api.jar" sourcepath="/WizardBattle/libs/tween-engine-api-sources.jar"/>
-	<classpathentry exported="true" kind="lib" path="/WizardBattle/libs/bodyeditor-loader.jar" sourcepath="/WizardBattle/libs/bodyeditor-loader-sources.jar"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>
