@@ -19,6 +19,12 @@ public enum WB_Screen {
 		protected com.badlogic.gdx.Screen getScreenInstance(){
 			return new CreditsScreen();
 		}
+	},
+	GAME{
+		@Override
+		protected com.badlogic.gdx.Screen getScreenInstance(){
+			return new GameScreen();
+		}
 	};
 	
 	protected abstract com.badlogic.gdx.Screen getScreenInstance();

@@ -9,7 +9,7 @@ public class MainGame extends Game {
 	@Override
 	public void create() {		
 		ScreenManager.getInstance().initialize(this);
-		ScreenManager.getInstance().show(WB_Screen.INTRO);
+		ScreenManager.getInstance().show(WB_Screen.GAME);
 	}
 
 	@Override

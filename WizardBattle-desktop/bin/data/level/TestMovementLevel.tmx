@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Tiles" tilewidth="32" tileheight="32">
-  <image source="../../art/Tiles.png" width="64" height="64"/>
+  <image source="../../art/4xTile.png" width="64" height="64"/>
+ </tileset>
+ <tileset firstgid="5" name="4xTile" tilewidth="32" tileheight="32">
+  <image source="../../art/4xTile.png" width="64" height="64"/>
  </tileset>
  <layer name="GroundLayer" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYWBgYBnFo3gUj+JRPIpJxACb3QZB
+   eJxjZWBgYB3Fo3gUj+JRPIpJxACBSAfR
   </data>
  </layer>
  <layer name="WallLayer" width="20" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYmBgYKIyphYYNW/UvFHzRs0bNY+65lETAwDifwCZ
+   eJxjZ2BgYKcyphagt3nY5ElVj02e2PAhxb/sSDQuPehyhOwmRg26ecTaTawaSuKbHuZRAigxD5ffiI1fbOYRsmMomEdsHiPGPErBUDGPmhgA5Y8DGA==
   </data>
  </layer>
 </map>
