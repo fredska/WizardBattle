@@ -1,25 +1,19 @@
 package com.wb.entity;
 
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.math.Vector2;
 
 public abstract class Projectile extends Entity {
 
-	private Vector2 velocity;
-
+	//Does the projectile heal whatever it collides with?
+	private boolean heal;
+	
 	public Projectile(boolean collidable) {
 		super(collidable);
+		heal = false;
+	}
+	
+	public boolean canHeal(){ return this.heal;}
+	public void setHeal(boolean canHeal){
+		this.heal = canHeal;
 	}
 
-	public abstract void draw(Batch batch);
-
-	public void setVelocity(Vector2 velocity) {
-		this.velocity = velocity;
-	}
-
-	public Vector2 getVelocity() {
-		if (this.velocity == null)
-			this.velocity = new Vector2();
-		return this.velocity;
-	}
 }

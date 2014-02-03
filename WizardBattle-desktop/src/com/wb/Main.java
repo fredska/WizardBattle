@@ -8,8 +8,8 @@ public class Main {
 		LwjglApplicationConfiguration cfg = new LwjglApplicationConfiguration();
 		cfg.title = "WizardBattle";
 		cfg.useGL20 = false;
-		cfg.width = 1024;
-		cfg.height = 768;
+		cfg.width = 640;
+		cfg.height = 480;
 		
 		new LwjglApplication(new MainGame(), cfg);
 	}

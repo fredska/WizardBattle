@@ -67,6 +67,8 @@ public class Player extends Entity {
 		playerWalkRight = compileAnimation(
 				"art/sprites/wizard/smr1/smr1_rt1.gif",
 				"art/sprites/wizard/smr1/smr1_rt2.gif");
+		super.setHeight(32f);
+		super.setWidth(32f);
 		this.WIDTH = 32f;
 		this.HEIGHT = 32f;
 		shapeRenderer = new ShapeRenderer();
@@ -85,8 +87,16 @@ public class Player extends Entity {
 		return result;
 	}
 
+	/**
+	 * Update any information of the player on a frame by frame basis
+	 * This includes movement, health, mana, animation changes 
+	 */
+	@Override
 	public void update(float delta){
 		this.stateTime += delta;
+		System.out.println("Velocity: " + getVelocity());
+		//Update the player's position;
+		getPosition().add(delta * getVelocity().x, delta * getVelocity().y, 0);
 	}
 	
 	@Override
@@ -104,11 +114,18 @@ public class Player extends Entity {
 			frame = playerWalkUp.getKeyFrame(this.stateTime);
 			break;
 		}
-		batch.enableBlending();
-		batch.begin();
-		batch.draw(frame, super.getPosition().x, super.getPosition().y, this.WIDTH,
-				this.HEIGHT);
-		batch.end();
+		
+		shapeRenderer.setProjectionMatrix(batch.getProjectionMatrix());
+		shapeRenderer.begin(ShapeType.Line);
+		shapeRenderer.setColor(Color.GRAY);
+		shapeRenderer.rect(getPosition().x, getPosition().y, WIDTH, HEIGHT);
+		shapeRenderer.end();
+		
+//		batch.enableBlending();
+//		batch.begin();
+//		batch.draw(frame, super.getPosition().x, super.getPosition().y, this.WIDTH,
+//				this.HEIGHT);
+//		batch.end();
 	}
 	
 	//Draw Debug squares around the player;
