@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="20" height="20" tilewidth="32" tileheight="32">
+<map version="1.0" orientation="orthogonal" width="40" height="20" tilewidth="32" tileheight="32">
  <tileset firstgid="1" name="Tiles" tilewidth="32" tileheight="32">
   <image source="../../art/4xTile.png" width="64" height="64"/>
  </tileset>
  <tileset firstgid="5" name="4xTile" tilewidth="32" tileheight="32">
   <image source="../../art/4xTile.png" width="64" height="64"/>
  </tileset>
- <layer name="GroundLayer" width="20" height="20">
+ <layer name="GroundLayer" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZWBgYB3Fo3gUj+JRPIpJxACBSAfR
+   eJztw0ENAAAMA6Grf9NzsRckrJqqqurDA5vdAyE=
   </data>
  </layer>
- <layer name="WallLayer" width="20" height="20">
+ <layer name="WallLayer" width="40" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjZ2BgYKcyphagt3nY5ElVj02e2PAhxb/sSDQuPehyhOwmRg26ecTaTawaSuKbHuZRAigxD5ffiI1fbOYRsmMomEdsHiPGPErBUDGPmhgA5Y8DGA==
+   eJzVlNEKwCAIRYX8/28evUVoM+2KHpCVuHao5SCiUTwQcPA5yfDzzie7HyvjU06rQfhZv31TE5l380Ocb9X78YJufoi+yEusORJye53kJ433dbPo7Cfh8eOf0Opu/E7rIkH0Z+kdy35Z7gfCL0JG//P8f5l+Ebr4VY4POT0C+w==
   </data>
  </layer>
 </map>

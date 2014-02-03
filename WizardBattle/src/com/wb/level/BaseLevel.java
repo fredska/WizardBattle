@@ -39,8 +39,6 @@ public class BaseLevel {
 		}
 	};
 	
-	private Array<Rectangle> tiles = new Array<Rectangle>();
-
 	public void getTiles(int startX, int startY, int endX, int endY,
 			Array<Rectangle> tiles) {
 		TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(1);
