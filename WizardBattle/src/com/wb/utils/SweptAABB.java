@@ -84,9 +84,11 @@ public class SweptAABB implements CollisionDetector {
 	    // calculate normal of collided surface
 	    // and do the slide :)
 	    if(xEntry < yEntry){
-			b1Velocity.set(xInvEntry < 0f?-b1Velocity.x: b1Velocity.x, 0);
+//			b1Velocity.set(xInvEntry < 0f? b1Velocity.x: b1Velocity.x, 0);
+	    	b1Velocity.set(b1Velocity.x, 0);
 		} else {
-			b1Velocity.set(0,yInvEntry < 0f? -b1Velocity.y: b1Velocity.y);
+			b1Velocity.set(0,b1Velocity.y);
+//			b1Velocity.set(0,yInvEntry < 0f? b1Velocity.y: b1Velocity.y);
 		}
 	    return entryTime;
 	}

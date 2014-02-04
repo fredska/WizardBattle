@@ -49,7 +49,7 @@ public class BaseLevel {
 				Cell cell = layer.getCell(x, y);
 				if (cell != null) {
 					Rectangle rect = rectPool.obtain();
-					rect.set(x, y, 1, 1);
+					rect.set(x*32, y*32, 33,33);
 					tiles.add(rect);
 				}
 			}
