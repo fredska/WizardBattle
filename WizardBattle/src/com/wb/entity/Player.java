@@ -2,6 +2,7 @@ package com.wb.entity;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Camera;
@@ -17,6 +18,9 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.wb.level.BaseLevel;
+import com.wb.level.LevelInstance;
+import com.wb.level.LevelManager;
+import com.wb.utils.SweptAABB;
 
 public class Player extends Entity {
 	
@@ -87,6 +91,7 @@ public class Player extends Entity {
 		return result;
 	}
 
+	private SweptAABB collisionDetector = new SweptAABB();
 	/**
 	 * Update any information of the player on a frame by frame basis
 	 * This includes movement, health, mana, animation changes 
@@ -94,9 +99,52 @@ public class Player extends Entity {
 	@Override
 	public void update(float delta){
 		this.stateTime += delta;
-		System.out.println("Velocity: " + getVelocity());
-		//Update the player's position;
-		getPosition().add(delta * getVelocity().x, delta * getVelocity().y, 0);
+//		System.out.println("Velocity: " + getVelocity());
+		
+		//Get all nearby tiles
+		//First load the level data;
+		BaseLevel level = null;
+		if(LevelManager.getInstance().getCurrentLevel() == null) {
+			LevelManager.getInstance().load(LevelInstance.TEST_MOVEMENT);
+		}
+		level = LevelManager.getInstance().getCurrentLevel();
+		tiles = new Array<Rectangle>();
+		tiles.clear();
+		startX = (int)((this.getPosition().x* 1.5) / this.WIDTH) - 2;
+		endX = (int)((this.getPosition().x* 1.5) / this.WIDTH) + 2;
+		startY = (int)((this.getPosition().y) / this.HEIGHT) - 2;
+		endY = (int)((this.getPosition().y) / this.HEIGHT) + 2;
+		level.getTiles(startX, startY, endX, endY, tiles);
+		
+		Rectangle boundingBox = new Rectangle(getPosition().x, getPosition().y, WIDTH, HEIGHT);
+		boolean collisionDetected = false;
+		for(Rectangle tile : tiles){
+			//Quickly check to see if there is a collision
+			tile.height *= 32;
+			tile.width *= 32;
+			tile.x *= 32;
+			tile.y *= 32;
+			if(collisionDetector.broadPhaseCollisionCheck(boundingBox, tile, getVelocity(), delta)){
+				collisionDetected = true;
+				//If so, then it can be determined that there will be a time of collision
+				float timeToCollision = 0f;
+				//Make a copy of the current Velocity
+				Vector2 tmpVelocity = getVelocity().cpy();
+				//Get the time till collision
+				timeToCollision = collisionDetector.nextIteration(boundingBox, tile, getVelocity(), delta);
+				//Move the player from the start time till delta with the given velocity
+				getPosition().add((delta - timeToCollision) * tmpVelocity.x, (delta - timeToCollision) * tmpVelocity.y, 0);
+				
+				//Now, with the new velocity from the detector, move the player the rest of the way
+				getPosition().add(timeToCollision * getVelocity().x, timeToCollision * getVelocity().y, 0);
+				break;
+			}
+		}
+		
+		//Update the player's position if no collisions were detected;
+		if(!collisionDetected)
+			getPosition().add(delta * getVelocity().x, delta * getVelocity().y, 0);
+		
 	}
 	
 	@Override
@@ -135,10 +183,10 @@ public class Player extends Entity {
 	private Array<Rectangle> tiles = new Array<Rectangle>();
 	public void debug(Camera camera, BaseLevel level){
 
-		startX = (int)((this.getPosition().x* 1.5) / this.WIDTH) - 1;
-		endX = (int)((this.getPosition().x* 1.5) / this.WIDTH) + 1;
-		startY = (int)((this.getPosition().y) / this.HEIGHT) - 1;
-		endY = (int)((this.getPosition().y) / this.HEIGHT) + 1;
+		startX = (int)((this.getPosition().x* 1.5) / this.WIDTH) - 2;
+		endX = (int)((this.getPosition().x* 1.5) / this.WIDTH) + 2;
+		startY = (int)((this.getPosition().y) / this.HEIGHT) - 2;
+		endY = (int)((this.getPosition().y) / this.HEIGHT) + 2;
 		
 		level.getTiles(startX, startY, endX, endY, tiles);
 		System.out.println("Number of Tile Collisions: " + tiles.size);
@@ -148,18 +196,6 @@ public class Player extends Entity {
 		shapeRenderer.setColor(Color.ORANGE);
 		shapeRenderer.rect(startX*32, startY * 32, 32* (endX - startX),32* (endY - startY));
 		shapeRenderer.end();
-	}
-	
-	public static boolean collisionCheck(int startX, int startY, int endX, int endY, BaseLevel level, Array<Rectangle> tiles){
-		level.getTiles(startX, startY, endX, endY, tiles);
-		if(tiles.size > 0){
-			//Check if the tile is above or below the character & block accordingly
-			if(tiles.get(0).y >= endY || tiles.get(0).x >= endX){
-				//Disable the upwards motion
-				return false;
-			}
-		}
-		return true;
 	}
 	
 	public void draw(Camera camera){

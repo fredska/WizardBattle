@@ -20,6 +20,8 @@ public final class ScreenManager {
 		return instance;
 	}
 	
+	public Game getGameInstance(){return this.game;}
+	
 	public void initialize(Game game){
 		this.game = game;
 	}

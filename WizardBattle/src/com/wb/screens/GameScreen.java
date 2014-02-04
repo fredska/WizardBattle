@@ -6,12 +6,12 @@ import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.utils.Array;
-import com.badlogic.gdx.utils.Pool;
 import com.wb.entity.Player;
 import com.wb.level.BaseLevel;
+import com.wb.level.LevelInstance;
+import com.wb.level.LevelManager;
 import com.wb.level.TestMovementLevel;
 
 public class GameScreen implements Screen {
@@ -50,7 +50,9 @@ public class GameScreen implements Screen {
 
 	@Override
 	public void show() {
-		level = new TestMovementLevel();
+		LevelManager.getInstance().initialize(ScreenManager.getInstance().getGameInstance());
+		LevelManager.getInstance().load(LevelInstance.TEST_MOVEMENT);
+		level = LevelManager.getInstance().getCurrentLevel();
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, SCREEN_WIDTH, SCREEN_HEIGHT);
 		player = new Player();
