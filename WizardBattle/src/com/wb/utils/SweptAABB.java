@@ -30,7 +30,7 @@ public class SweptAABB implements CollisionDetector {
 	 * @param delta
 	 * @return
 	 */
-	public float nextIteration(Rectangle b1, Rectangle b2, Vector2 b1Velocity, float delta) {
+	public static float nextIteration(Rectangle b1, Rectangle b2, Vector2 b1Velocity, float delta) {
 		float xInvEntry, yInvEntry;
 		float xInvExit, yInvExit;
 		
@@ -93,7 +93,7 @@ public class SweptAABB implements CollisionDetector {
 	    return entryTime;
 	}
 	
-	public boolean broadPhaseCollisionCheck(Rectangle b1, Rectangle b2, Vector2 b1Velocity, float delta){
+	public static boolean broadPhaseCollisionCheck(Rectangle b1, Rectangle b2, Vector2 b1Velocity, float delta){
 		Rectangle broadPhaseBox = new Rectangle();
 		broadPhaseBox.x = b1Velocity.x > 0 ? b1.x: b1.x + b1Velocity.x * delta;
 		broadPhaseBox.y = b1Velocity.y > 0 ? b1.y: b1.y + b1Velocity.y * delta;

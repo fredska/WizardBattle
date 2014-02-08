@@ -32,6 +32,7 @@ public class LevelManager {
 			levels.put(levelInstance.ordinal(), levelInstance.getLevelInstance());
 		}
 		currentLevel = levels.get(levelInstance.ordinal());
+		currentLevel.loadLevelIntoWorld(1);
 	}
 
 	public void dispose() {
